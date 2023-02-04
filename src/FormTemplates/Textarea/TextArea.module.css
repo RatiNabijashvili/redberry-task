@@ -1,0 +1,21 @@
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-name {
+  font-family: Helvetica Neue;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 1vw, 5rem);
+}
+
+.textarea {
+  margin-top: 0.7vw;
+  resize: none;
+  outline: 0;
+  border-radius: 0.5vw;
+  width: clamp(15em, 45vw, 60em);
+  height: clamp(5em, 15vh, 20em);
+  font-size: clamp(0.8rem, 1vw, 5rem);
+  padding: 0.5vw 1vw;
+}

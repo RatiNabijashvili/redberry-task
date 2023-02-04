@@ -1,0 +1,43 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-name {
+  font-family: Helvetica Neue;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 1vw, 5rem);
+}
+
+.input-with-logo {
+  display: flex;
+  align-items: center;
+  margin-top: 0.7vw;
+}
+
+.validation-icon {
+  width: clamp(1.2em, 1.2vw, 5em);
+  position: absolute;
+}
+
+.error-icon {
+  width: clamp(1.2em, 1.2vw, 5em);
+  margin-left: 0.8vw;
+}
+
+.input {
+  color: #000000;
+  font-family: Helvetica Neue;
+  outline: 0;
+  height: clamp(2em, 5vh, 10em);
+  font-size: clamp(0.8rem, 1vw, 5rem);
+  border-radius: 0.5vw;
+  padding-left: 1vw;
+}
+
+.validation-text {
+  font-family: Helvetica Neue;
+  font-weight: 300;
+  font-size: clamp(0.8rem, 0.8vw, 4rem);
+  color: #2e2e2e;
+}

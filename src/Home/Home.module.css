@@ -28,7 +28,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: Helvetica Neue;
-  font-weight: medium;
+  font-weight: 500;
   outline: 0;
   border: none;
   background-color: #1a1a1a;
@@ -49,4 +49,5 @@ body {
   top: 62%;
   left: 68%;
   transform: translate(-68%, -62%);
+  z-index: -1;
 }
