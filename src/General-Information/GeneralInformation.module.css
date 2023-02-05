@@ -1,0 +1,125 @@
+.main-container {
+  display: flex;
+}
+
+.left-column {
+  margin: 2vw;
+  display: flex;
+  justify-content: space-between;
+  width: 55vw;
+}
+
+.arrow-icon {
+  width: 0.7vw;
+}
+
+.arrow-icon:hover {
+  cursor: pointer;
+}
+
+.second-column {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+.page-name-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.page-name {
+  color: #1a1a1a;
+  font-family: Helvetica Neue;
+  font-weight: bold;
+  font-size: clamp(1.2rem, 1.2vw, 3rem);
+}
+
+.page-indicator {
+  color: #1a1a1a;
+  font-family: Helvetica Neue;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.1vw, 3rem);
+}
+
+.page-indicator,
+.page-name {
+  margin: 0;
+  margin-bottom: 0.5vw;
+}
+
+.name-surname-conatiner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.upload-container {
+  width: 23vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1vw;
+}
+
+.main-upload-text,
+.upload-text {
+  font-family: Helvetica Neue;
+}
+
+.main-upload-text {
+  color: #1a1a1a;
+  font-size: clamp(1rem, 1.1vw, 5rem);
+  font-weight: 500;
+}
+
+.upload-text {
+  background-color: #0e80bf;
+  color: #ffffff;
+  font-size: clamp(0.7rem, 0.9vw, 5rem);
+  padding: 0.4vw 1vw;
+  border-radius: 0.3vw;
+}
+
+.upload-text:hover {
+  cursor: pointer;
+}
+
+.upload-input {
+  display: none;
+}
+
+.next-btn-container {
+  width: 50vw;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2vw;
+}
+
+.next-btn {
+  background-color: #6b40e3;
+  color: #ffffff;
+  font-family: Helvetica Neue;
+  outline: 0;
+  border: none;
+  height: clamp(2em, 5vh, 10em);
+  font-size: clamp(0.8rem, 1vw, 5rem);
+  width: clamp(5em, 8vw, 13em);
+  border-radius: 0.3vw;
+}
+
+.next-btn:hover {
+  cursor: pointer;
+  background-color: #7949ff;
+  width: clamp(10em, 15vw, 17em);
+}
+
+.next-btn:hover span {
+  display: none;
+}
+
+.next-btn:hover:before {
+  content: 'ჩანაწერის დამატება';
+}

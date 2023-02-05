@@ -1,6 +1,7 @@
 .textarea-container {
   display: flex;
   flex-direction: column;
+  margin-top: 2vw;
 }
 
 .label-name {
@@ -14,8 +15,8 @@
   resize: none;
   outline: 0;
   border-radius: 0.3vw;
-  width: clamp(15em, 45vw, 60em);
-  height: clamp(5em, 15vh, 20em);
+  width: clamp(15em, 47.9vw, 60em);
+  height: clamp(5em, 10vh, 20em);
   font-size: clamp(0.8rem, 1vw, 5rem);
   padding: 0.5vw 1vw;
 }
