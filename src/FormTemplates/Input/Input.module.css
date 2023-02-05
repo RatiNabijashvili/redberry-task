@@ -31,7 +31,7 @@
   outline: 0;
   height: clamp(2em, 5vh, 10em);
   font-size: clamp(0.8rem, 1vw, 5rem);
-  border-radius: 0.5vw;
+  border-radius: 0.3vw;
   padding-left: 1vw;
 }
 
