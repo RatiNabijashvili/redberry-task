@@ -2,7 +2,7 @@ import React from 'react'
 import Styles from './GeneralInformation.module.css'
 import ArrowIcon from '../Images/arrow-icon.svg'
 import { useNavigate } from 'react-router-dom'
-import Form from '../Form/Form'
+import GeneralInformationForm from '../Forms/GeneralInformationForm/GeneralInfromationForm'
 
 const GeneralInformation = () => {
   const navigate = useNavigate()
@@ -25,7 +25,7 @@ const GeneralInformation = () => {
             <h2 className={Styles['page-name']}>პირადი ინფო</h2>
             <h2 className={Styles['page-indicator']}>1/3</h2>
           </div>
-          <Form />
+          <GeneralInformationForm />
         </div>
       </div>
       <div className={Styles['right-column']}></div>

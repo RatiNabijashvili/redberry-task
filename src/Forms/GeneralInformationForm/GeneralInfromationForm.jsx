@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Styles from './Form.module.css'
-import Input from '../FormTemplates/Input/Input'
-import TextArea from '../FormTemplates/Textarea/TextArea'
+import Input from '../../FormTemplates/Input/Input'
+import TextArea from '../../FormTemplates/Textarea/TextArea'
+import ImageUploader from '../../FormTemplates/ImageUploader/ImageUploader'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
@@ -19,7 +20,7 @@ const getForm = () => {
   return JSON.parse(storedValues)
 }
 
-const Form = () => {
+const GeneralInformationForm = () => {
   const {
     register,
     handleSubmit,
@@ -80,22 +81,7 @@ const Form = () => {
           register={register}
         />
       </div>
-      <div className={Styles['upload-container']}>
-        <label className={Styles['main-upload-text']}>
-          პირადი ფოტოს ატვირთვა
-        </label>
-        <label className={Styles['upload-text']}>
-          ატვირთვა
-          <input
-            type='file'
-            accept='image/png, image/jpg, image/gif, image/jpeg'
-            className={Styles['upload-input']}
-            name='image'
-            {...register('image')}
-            onChange={handleChange}
-          />
-        </label>
-      </div>
+      <ImageUploader name='image' register={register} onChange={handleChange} />
       <TextArea
         labelName='ჩემ შესახებ (არასავალდებულო)'
         name='about_me'
@@ -153,4 +139,4 @@ const Form = () => {
   )
 }
 
-export default Form
+export default GeneralInformationForm

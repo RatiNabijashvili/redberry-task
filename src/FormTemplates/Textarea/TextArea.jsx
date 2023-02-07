@@ -8,14 +8,15 @@ const TextArea = (props) => {
       <textarea
         placeholder='ზოგადი ინფო ჩემს შესახებ'
         className={Styles.textarea}
-        name={props.name}
         style={{
           border:
             props.value === '' ? '1px solid #BCBCBC' : '1px solid #98E37E',
         }}
-        value={props.value}
-        onChange={props.onChange}
-        {...props.register(props.name)}
+        {...props.register(props.name, {
+          onChange: props.onChange,
+          value: props.value,
+          name: props.name,
+        })}
       />
     </div>
   )
