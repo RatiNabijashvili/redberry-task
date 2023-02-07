@@ -1,32 +1,15 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
 import Styles from './Input.module.css'
 import ValidationIcon from '../../Images/validation-icon.svg'
 import ErrorIcon from '../../Images/validation-error-icon.svg'
 
 const Input = (props) => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      [props.name]: '',
-    },
-  })
-  const isEmpty = watch(props.name)
   return (
-    <div
-      onChange={handleSubmit((data) => {
-        return data
-      })}
-      className={Styles['input-container']}
-    >
+    <div className={Styles['input-container']}>
       <label
         className={Styles['label-name']}
         style={{
-          color: isEmpty !== '' && errors[props.name] ? '#e52f2f' : '#000000',
+          color: props.value !== '' && props.error ? '#e52f2f' : '#000000',
         }}
       >
         {props.labelName}
@@ -36,12 +19,17 @@ const Input = (props) => {
           type='text'
           className={Styles.input}
           placeholder={props.placeHolder}
-          {...register(`${props.name}`, props.validation)}
+          {...props.register(props.name, {
+            ...props.validation,
+            onChange: props.onChange,
+            value: props.value,
+            name: props.name,
+          })}
           style={{
             border:
-              isEmpty === ''
+              props.value === ''
                 ? '1px solid #bcbcbc'
-                : errors[props.name]
+                : props.error
                 ? '1px solid #E52F2F'
                 : '1px solid #98E37E',
             width: props.width,
@@ -51,7 +39,7 @@ const Input = (props) => {
           src={ValidationIcon}
           className={Styles['validation-icon']}
           style={{
-            display: isEmpty !== '' && !errors[props.name] ? 'block' : 'none',
+            display: props.value !== '' && !props.error ? 'block' : 'none',
             left: props.iconPosition,
           }}
           alt='validation-icon'
@@ -60,13 +48,13 @@ const Input = (props) => {
           src={ErrorIcon}
           className={Styles['error-icon']}
           style={{
-            display: isEmpty !== '' && errors[props.name] ? 'block' : 'none',
+            display: props.value !== '' && props.error ? 'block' : 'none',
           }}
           alt='error-icon'
         />
       </div>
       <p className={Styles['validation-text']}>
-        {isEmpty === '' ? props.validationMessage : errors[props.name]?.message}
+        {props.value === '' ? props.validationMessage : props.error?.message}
       </p>
     </div>
   )
