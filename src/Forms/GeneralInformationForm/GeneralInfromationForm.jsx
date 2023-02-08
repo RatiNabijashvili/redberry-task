@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { Context } from '../../context.js'
 import Styles from './Form.module.css'
 import Input from '../../FormTemplates/Input/Input'
 import TextArea from '../../FormTemplates/Textarea/TextArea'
@@ -21,6 +22,7 @@ const getForm = () => {
 }
 
 const GeneralInformationForm = () => {
+  const { data, setData } = useContext(Context)
   const {
     register,
     handleSubmit,
@@ -36,13 +38,21 @@ const GeneralInformationForm = () => {
       [e.target.name]: e.target.value,
     }))
   }
+  const handleData = () => {
+    setData((previousValues) => ({
+      ...previousValues,
+      ...values,
+    }))
+  }
   useEffect(() => {
     localStorage.setItem('form', JSON.stringify(values))
   }, [values])
 
+  console.log(data, values)
+
   return (
     <form
-      onChange={console.log('change')}
+      onChange={handleData}
       onSubmit={handleSubmit((data) => console.log('submit', data))}
     >
       <div className={Styles['name-surname-container']}>
