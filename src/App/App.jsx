@@ -8,19 +8,16 @@ import Education from '../Education/Education'
 import Resume from '../Resume/Resume'
 
 const App = () => {
-  const [data, setData] = useState({})
   return (
-    <Context.Provider value={[data, setData]}>
-      <div>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/general-information' element={<GeneralInformation />} />
-          <Route path='/experience' element={<Experience />} />
-          <Route path='/education' element={<Education />} />
-          <Route path='/resume' element={<Resume />} />
-        </Routes>
-      </div>
-    </Context.Provider>
+    <div>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/general-information' element={<GeneralInformation />} />
+        <Route path='/experience' element={<Experience />} />
+        <Route path='/education' element={<Education />} />
+        <Route path='/resume' element={<Resume />} />
+      </Routes>
+    </div>
   )
 }
 

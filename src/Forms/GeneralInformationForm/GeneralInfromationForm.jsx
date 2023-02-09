@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { Context } from '../../context.js'
+import React, { useState, useEffect } from 'react'
 import Styles from './Form.module.css'
 import Input from '../../FormTemplates/Input/Input'
 import TextArea from '../../FormTemplates/Textarea/TextArea'
@@ -8,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 const getForm = () => {
-  const storedValues = localStorage.getItem('form')
+  const storedValues = localStorage.getItem('GeneralInformationForm')
   if (!storedValues)
     return {
       name: '',
@@ -22,7 +21,6 @@ const getForm = () => {
 }
 
 const GeneralInformationForm = () => {
-  const { data, setData } = useContext(Context)
   const {
     register,
     handleSubmit,
@@ -38,23 +36,12 @@ const GeneralInformationForm = () => {
       [e.target.name]: e.target.value,
     }))
   }
-  const handleData = () => {
-    setData((previousValues) => ({
-      ...previousValues,
-      ...values,
-    }))
-  }
   useEffect(() => {
-    localStorage.setItem('form', JSON.stringify(values))
+    localStorage.setItem('GeneralInformationForm', JSON.stringify(values))
   }, [values])
 
-  console.log(data, values)
-
   return (
-    <form
-      onChange={handleData}
-      onSubmit={handleSubmit((data) => console.log('submit', data))}
-    >
+    <form onSubmit={handleSubmit((data) => console.log('submit', data))}>
       <div className={Styles['name-surname-container']}>
         <Input
           labelName='სახელი'
@@ -94,8 +81,12 @@ const GeneralInformationForm = () => {
       <ImageUploader name='image' register={register} onChange={handleChange} />
       <TextArea
         labelName='ჩემ შესახებ (არასავალდებულო)'
+        placeHolder='ზოგადი ინფო ჩემს შესახებ'
         name='about_me'
         value={values.about_me}
+        validation={{
+          required: false,
+        }}
         onChange={handleChange}
         register={register}
       />
@@ -140,7 +131,7 @@ const GeneralInformationForm = () => {
       <div className={Styles['next-btn-container']}>
         <button
           className={Styles['next-btn']}
-          //   onClick={() => navigate('/experience')}
+          onClick={() => navigate('/experience')}
         >
           <span>შემდეგი</span>
         </button>
