@@ -1,0 +1,63 @@
+.date-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  width: 'clamp(15em, 49vw, 60em)';
+  height: 0.2vh;
+  margin-top: 2vw;
+  background-color: #c1c1c1;
+}
+
+.add-more-btn {
+  background-color: #62a1eb;
+  color: #ffffff;
+  font-family: Helvetica Neue;
+  outline: 0;
+  border: none;
+  height: clamp(2em, 5vh, 10em);
+  font-size: clamp(0.8rem, 1vw, 5rem);
+  width: clamp(16em, 18vw, 25em);
+  border-radius: 0.3vw;
+  margin-top: 2vw;
+}
+
+.add-more-btn:hover {
+  cursor: pointer;
+  background-color: #79b0ee;
+}
+
+.button-container {
+  width: 50vw;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4vw;
+}
+
+.btn {
+  background-color: #6b40e3;
+  color: #ffffff;
+  font-family: Helvetica Neue;
+  outline: 0;
+  border: none;
+  height: clamp(2em, 5vh, 10em);
+  font-size: clamp(0.8rem, 1vw, 5rem);
+  width: clamp(5em, 8vw, 13em);
+  border-radius: 0.3vw;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #7949ff;
+  width: clamp(10em, 15vw, 17em);
+}
+
+.btn:hover span {
+  display: none;
+}
+
+.btn:hover:before {
+  content: 'ჩანაწერის დამატება';
+}
