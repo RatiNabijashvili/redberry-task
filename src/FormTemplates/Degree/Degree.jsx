@@ -3,14 +3,16 @@ import Styles from './Degree.module.css'
 
 const Degree = (props) => {
   const [degrees, setDegrees] = useState([])
-  const fetchData = () => {
-    return fetch('https://resume.redberryinternship.ge/api/degrees')
-      .then((response) => response.json())
-      .then((data) => setDegrees(data))
-  }
+
   useEffect(() => {
+    const fetchData = async () => {
+      fetch('https://resume.redberryinternship.ge/api/degrees')
+        .then((response) => response.json())
+        .then((data) => setDegrees(data))
+    }
     fetchData()
   }, [])
+
   return (
     <div className={Styles['degree-container']}>
       <label
@@ -21,35 +23,54 @@ const Degree = (props) => {
       >
         {props.labelName}
       </label>
-      <select
-        className={Styles['degree-selection']}
-        {...props.register(props.name, {
-          ...props.validation,
-          onChange: props.onChange,
-          value: props.value,
-          name: props.name,
-        })}
-        style={{
-          border:
-            props.value === ''
-              ? '1px solid #bcbcbc'
-              : props.error
-              ? '1px solid #E52F2F'
-              : '1px solid #98E37E',
-          width: props.width,
-        }}
-      >
-        <option value='' disabled>
-          {props.placeHolder}
-        </option>
-        {Object.keys(degrees).map((data) => {
-          return (
-            <option key={data} value={degrees[data].title}>
-              {degrees[data].title}
-            </option>
-          )
-        })}
-      </select>
+      {degrees.length > 0 ? (
+        <select
+          className={Styles['degree-selection']}
+          {...props.register(props.name, {
+            ...props.validation,
+            onChange: props.onChange,
+            value: props.value,
+            name: props.name,
+          })}
+          style={{
+            border:
+              props.value === ''
+                ? '1px solid #bcbcbc'
+                : props.error
+                ? '1px solid #E52F2F'
+                : '1px solid #98E37E',
+            width: props.width,
+          }}
+        >
+          <option value={props.placeHodler} disabled>
+            {props.placeHolder}
+          </option>
+          {degrees.map((degree) => {
+            return (
+              <option
+                key={degree.id}
+                value={degree.title}
+                // selected={degree.title === props.value ? 'selected' : ''}
+              >
+                {degree.title}
+              </option>
+            )
+          })}
+        </select>
+      ) : (
+        <select
+          className={Styles['degree-selection']}
+          style={{
+            border:
+              props.value === ''
+                ? '1px solid #bcbcbc'
+                : props.error
+                ? '1px solid #E52F2F'
+                : '1px solid #98E37E',
+            width: props.width,
+          }}
+        ></select>
+      )}
     </div>
   )
 }

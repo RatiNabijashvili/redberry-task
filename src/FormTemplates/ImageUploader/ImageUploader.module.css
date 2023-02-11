@@ -32,3 +32,10 @@
 .upload-input {
   display: none;
 }
+
+.validation-text {
+  font-family: Helvetica Neue;
+  font-weight: 300;
+  font-size: clamp(0.8rem, 0.8vw, 4rem);
+  color: #2e2e2e;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import Styles from './DatePicker.module.css'
 
-const DataPicker = (props) => {
+const DatePicker = (props) => {
   return (
     <div className={Styles['datePicker-container']}>
       <label className={Styles['label-name']}>{props.labelName}</label>
@@ -23,4 +23,4 @@ const DataPicker = (props) => {
   )
 }
 
-export default DataPicker
+export default DatePicker

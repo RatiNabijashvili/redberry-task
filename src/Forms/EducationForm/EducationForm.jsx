@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Input from '../../FormTemplates/Input/Input'
-import DataPicker from '../../FormTemplates/DatePicker/DataPicker'
+import DataPicker from '../../FormTemplates/DatePicker/DatePicker'
 import TextArea from '../../FormTemplates/Textarea/TextArea'
 import Degree from '../../FormTemplates/Degree/Degree'
 import { useForm } from 'react-hook-form'

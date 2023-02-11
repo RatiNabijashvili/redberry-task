@@ -1,24 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import Styles from './Form.module.css'
 import Input from '../../FormTemplates/Input/Input'
 import TextArea from '../../FormTemplates/Textarea/TextArea'
 import ImageUploader from '../../FormTemplates/ImageUploader/ImageUploader'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-
-const getForm = () => {
-  const storedValues = localStorage.getItem('GeneralInformationForm')
-  if (!storedValues)
-    return {
-      name: '',
-      surname: '',
-      image: '',
-      about_me: '',
-      email: '',
-      mobile_number: '',
-    }
-  return JSON.parse(storedValues)
-}
+import { FormContext } from '../../context'
 
 const GeneralInformationForm = () => {
   const {
@@ -28,20 +15,24 @@ const GeneralInformationForm = () => {
   } = useForm({
     mode: 'onChange',
   })
-  const [values, setValues] = useState(getForm)
+
+  const { formData, changeGeneralField } = useContext(FormContext)
   const navigate = useNavigate()
-  const handleChange = (e) => {
-    setValues((previousValues) => ({
-      ...previousValues,
-      [e.target.name]: e.target.value,
-    }))
+
+  const onSubmit = () => {
+    navigate('/experience')
   }
-  useEffect(() => {
-    localStorage.setItem('GeneralInformationForm', JSON.stringify(values))
-  }, [values])
+
+  const handleChange = (e) => {
+    changeGeneralField({ [e.target.name]: e.target.value })
+  }
+
+  const handleUpload = (e, img) => {
+    changeGeneralField({ [e.target.name]: img })
+  }
 
   return (
-    <form onSubmit={handleSubmit((data) => console.log('submit', data))}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className={Styles['name-surname-container']}>
         <Input
           labelName='სახელი'
@@ -55,7 +46,7 @@ const GeneralInformationForm = () => {
             minLength: { value: 2, message: 'მინიმუმ 2 ასო' },
             pattern: { value: /^[ა-ჰ]+$/, message: 'ქართული ასოები' },
           }}
-          value={values.name}
+          value={formData.name}
           onChange={handleChange}
           error={errors?.name}
           register={register}
@@ -72,18 +63,29 @@ const GeneralInformationForm = () => {
             minLength: { value: 2, message: 'მინიმუმ 2 ასო' },
             pattern: { value: /^[ა-ჰ]+$/, message: 'ქართული ასოები' },
           }}
-          value={values.surname}
+          value={formData.surname}
           onChange={handleChange}
           error={errors?.surname}
           register={register}
         />
       </div>
-      <ImageUploader name='image' register={register} onChange={handleChange} />
+      <ImageUploader
+        name='image'
+        register={register}
+        onUpload={handleUpload}
+        validation={{
+          required: {
+            value: formData.image.length === 0,
+            message: 'ატვირთეთ სურათი',
+          },
+        }}
+        error={errors?.image}
+      />
       <TextArea
-        labelName='ჩემ შესახებ (არასავალდებულო)'
+        labelName='ჩემს შესახებ (არასავალდებულო)'
         placeHolder='ზოგადი ინფო ჩემს შესახებ'
         name='about_me'
-        value={values.about_me}
+        value={formData.about_me}
         validation={{
           required: false,
         }}
@@ -104,7 +106,7 @@ const GeneralInformationForm = () => {
             message: 'უნდა მთავრდებოდეს @redberry.ge-ით',
           },
         }}
-        value={values.email}
+        value={formData.email}
         onChange={handleChange}
         error={errors?.email}
         register={register}
@@ -123,16 +125,13 @@ const GeneralInformationForm = () => {
             message: 'უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს',
           },
         }}
-        value={values.mobile_number}
+        value={formData.mobile_number}
         onChange={handleChange}
         error={errors?.mobile_number}
         register={register}
       />
       <div className={Styles['next-btn-container']}>
-        <button
-          className={Styles['next-btn']}
-          onClick={() => navigate('/experience')}
-        >
+        <button type='submit' className={Styles['next-btn']}>
           <span>შემდეგი</span>
         </button>
       </div>

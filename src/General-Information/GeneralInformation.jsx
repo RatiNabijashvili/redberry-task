@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Styles from './GeneralInformation.module.css'
 import ArrowIcon from '../Images/arrow-icon.svg'
-import { useNavigate } from 'react-router-dom'
+import { Form, useNavigate } from 'react-router-dom'
 import GeneralInformationForm from '../Forms/GeneralInformationForm/GeneralInfromationForm'
+import { FormContext } from '../context'
+import Resume from '../Resume/Resume'
 
 const GeneralInformation = () => {
   const navigate = useNavigate()
+  const { clearData } = useContext(FormContext)
   return (
     <div className={Styles['main-container']}>
       <div className={Styles['left-column']}>
@@ -15,7 +18,7 @@ const GeneralInformation = () => {
             className={Styles['arrow-icon']}
             alt='arrow-icon'
             onClick={() => {
-              localStorage.clear()
+              clearData()
               navigate('/')
             }}
           />
@@ -28,7 +31,9 @@ const GeneralInformation = () => {
           <GeneralInformationForm />
         </div>
       </div>
-      <div className={Styles['right-column']}></div>
+      <div className={Styles['right-column']}>
+        <Resume />
+      </div>
     </div>
   )
 }
