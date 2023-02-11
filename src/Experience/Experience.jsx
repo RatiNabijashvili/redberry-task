@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Styles from './Experience.module.css'
 import ExperienceForm from '../Forms/ExperienceForm/ExperienceForm'
 import ArrowIcon from '../Images/arrow-icon.svg'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
+import Resume from '../Resume/Resume'
+import { FormContext } from '../context'
 
 const Experience = () => {
   const navigate = useNavigate()
+  const { validationIndex, clearData } = useContext(FormContext)
+  if (validationIndex < 1) return <Navigate to='/general-information' replace />
+
   return (
     <div className={Styles['main-container']}>
       <div className={Styles['left-column']}>
@@ -15,7 +20,7 @@ const Experience = () => {
             className={Styles['arrow-icon']}
             alt='arrow-icon'
             onClick={() => {
-              localStorage.clear()
+              clearData()
               navigate('/')
             }}
           />
@@ -28,7 +33,9 @@ const Experience = () => {
           <ExperienceForm />
         </div>
       </div>
-      <div className={Styles['right-column']}></div>
+      <div className={Styles['right-column']}>
+        <Resume width='44vw' minHeight='100vh' />
+      </div>
     </div>
   )
 }

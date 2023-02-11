@@ -1,17 +1,23 @@
 .main-container {
   display: flex;
   background-color: #f9f9f9;
+  justify-content: space-between;
 }
 
 .left-column {
   margin: 2vw;
   display: flex;
   justify-content: space-between;
-  width: 55vw;
+  width: 48vw;
 }
 
 .arrow-icon {
   width: 0.7vw;
+}
+
+.right-column {
+  width: 45vw;
+  height: 100vh;
 }
 
 .arrow-icon:hover {
@@ -21,7 +27,7 @@
 .second-column {
   display: flex;
   flex-direction: column;
-  width: 50vw;
+  width: 45vw;
 }
 
 .page-name-container {

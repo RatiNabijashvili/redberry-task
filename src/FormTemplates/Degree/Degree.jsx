@@ -47,11 +47,7 @@ const Degree = (props) => {
           </option>
           {degrees.map((degree) => {
             return (
-              <option
-                key={degree.id}
-                value={degree.title}
-                // selected={degree.title === props.value ? 'selected' : ''}
-              >
+              <option key={degree.id} value={degree.title}>
                 {degree.title}
               </option>
             )
@@ -71,6 +67,7 @@ const Degree = (props) => {
           }}
         ></select>
       )}
+      <p className={Styles['validation-text']}>{props.error?.message}</p>
     </div>
   )
 }

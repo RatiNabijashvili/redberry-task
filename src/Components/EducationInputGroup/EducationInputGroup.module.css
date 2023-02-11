@@ -1,0 +1,11 @@
+.date-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line {
+  width: 'clamp(15em, 49vw, 60em)';
+  height: 0.2vh;
+  margin-top: 2vw;
+  background-color: #c1c1c1;
+}

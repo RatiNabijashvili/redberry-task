@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import Input from '../../FormTemplates/Input/Input'
-import DataPicker from '../../FormTemplates/DatePicker/DatePicker'
-import TextArea from '../../FormTemplates/Textarea/TextArea'
-import Degree from '../../FormTemplates/Degree/Degree'
+import React, { useEffect, useState, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Styles from './Form.module.css'
-
-const getForm = () => {
-  const storedValues = localStorage.getItem('EducationForm')
-  if (!storedValues)
-    return {
-      institute: '',
-      degree: '',
-      due_date: '',
-      description: '',
-    }
-  return JSON.parse(storedValues)
-}
+import { FormContext } from '../../context'
+import EducationInputGroup from '../../Components/EducationInputGroup/EducationInputGroup'
 
 const EducationForm = () => {
   const {
@@ -27,72 +13,44 @@ const EducationForm = () => {
   } = useForm({
     mode: 'onChange',
   })
-  const [values, setValues] = useState(getForm)
-  const navigate = useNavigate()
-  const handleChange = (e) => {
-    setValues((previousValues) => ({
-      ...previousValues,
-      [e.target.name]: e.target.value,
-    }))
+  const { formData, changeEducationsField, addEducation, setValidationIndex } =
+    useContext(FormContext)
+
+  const onSubmit = () => {
+    navigate('/resume')
+    setValidationIndex(3)
   }
-  useEffect(() => {
-    localStorage.setItem('EducationForm', JSON.stringify(values))
-  }, [values])
+
+  const navigate = useNavigate()
+
   return (
-    <form onSubmit={handleSubmit((data) => console.log('submit', data))}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <Input
-          labelName='სასწავლებელი'
-          placeHolder='სასწავლებელი'
-          name='institute'
-          width='clamp(15em, 49vw, 60em)'
-          iconPosition='55vw'
-          validationMessage='მინიმუმ 2 სიმბოლო'
-          validation={{
-            required: true,
-            minLength: { value: 2, message: 'მინიმუმ 2 ასო' },
-          }}
-          value={values.institute}
-          onChange={handleChange}
-          error={errors?.institute}
-          register={register}
-        />
-        <div className={Styles['date-container']}>
-          <Degree
-            labelName='ხარისხი'
-            placeHolder='აირჩიეთ ხარისხი'
-            name='degree'
-            validation={{
-              required: true,
-            }}
-            value={values.degree}
-            onChange={handleChange}
-            register={register}
-          />
-          <DataPicker
-            labelName='დამთავრების რიცხვი'
-            name='due_date'
-            validation={{
-              required: true,
-            }}
-            value={values.due_date}
-            onChange={handleChange}
-            register={register}
-          />
-        </div>
-        <TextArea
-          labelName='აღწერა'
-          placeHolder='განათლების აღწერა'
-          name='description'
-          validation={{
-            required: true,
-          }}
-          value={values.description}
-          onChange={handleChange}
-          register={register}
-        />
+        {formData.educations.map((educationObj, i) => {
+          const prefix = `group-${i}-`
+          const handleChange = (e) => {
+            const key = e.target.name.substring(prefix.length)
+            changeEducationsField(i, { [key]: e.target.value })
+            setValidationIndex(2)
+          }
+
+          return (
+            <EducationInputGroup
+              key={i}
+              register={register}
+              prefix={prefix}
+              values={educationObj}
+              errors={errors}
+              onChange={handleChange}
+            />
+          )
+        })}
         <div className={Styles.line} />
-        <button className={Styles['add-more-btn']}>
+        <button
+          type='button'
+          className={Styles['add-more-btn']}
+          onClick={addEducation}
+        >
           მეტი გამოცდილების დამატება
         </button>
         <div className={Styles['button-container']}>
@@ -102,7 +60,7 @@ const EducationForm = () => {
           >
             <span>უკან</span>
           </button>
-          <button className={Styles.btn} onClick={() => navigate('/resume')}>
+          <button className={Styles.btn}>
             <span>შემდეგი</span>
           </button>
         </div>

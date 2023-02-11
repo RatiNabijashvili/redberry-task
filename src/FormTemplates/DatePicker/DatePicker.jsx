@@ -19,6 +19,7 @@ const DatePicker = (props) => {
           value: props.value,
         })}
       />
+      <p className={Styles['validation-text']}>{props.error?.message}</p>
     </div>
   )
 }

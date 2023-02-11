@@ -19,6 +19,7 @@ const TextArea = (props) => {
           name: props.name,
         })}
       />
+      <p className={Styles['validation-text']}>{props.error?.message}</p>
     </div>
   )
 }

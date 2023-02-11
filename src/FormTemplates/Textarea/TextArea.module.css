@@ -15,8 +15,15 @@
   resize: none;
   outline: 0;
   border-radius: 0.3vw;
-  width: clamp(15em, 47.9vw, 60em);
+  width: clamp(15em, 43vw, 60em);
   height: clamp(5em, 10vh, 20em);
   font-size: clamp(0.8rem, 1vw, 5rem);
   padding: 0.5vw 1vw;
+}
+
+.validation-text {
+  font-family: Helvetica Neue;
+  font-weight: 300;
+  font-size: clamp(0.8rem, 0.8vw, 4rem);
+  color: #2e2e2e;
 }

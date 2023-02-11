@@ -11,20 +11,23 @@ const GeneralInformationForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid, isValidating },
   } = useForm({
     mode: 'onChange',
   })
 
-  const { formData, changeGeneralField } = useContext(FormContext)
+  const { formData, changeGeneralField, setValidationIndex } =
+    useContext(FormContext)
   const navigate = useNavigate()
 
   const onSubmit = () => {
     navigate('/experience')
+    setValidationIndex(1)
   }
 
   const handleChange = (e) => {
     changeGeneralField({ [e.target.name]: e.target.value })
+    setValidationIndex(0)
   }
 
   const handleUpload = (e, img) => {
@@ -38,8 +41,8 @@ const GeneralInformationForm = () => {
           labelName='სახელი'
           placeHolder='ანზორ'
           name='name'
-          width='clamp(15em, 22vw, 35em)'
-          iconPosition='28vw'
+          width='clamp(15em, 20vw, 35em)'
+          iconPosition='23vw'
           validationMessage='მინიმუმ 2 ასო, ქართული ასოები'
           validation={{
             required: true,
@@ -55,8 +58,8 @@ const GeneralInformationForm = () => {
           labelName='გვარი'
           placeHolder='მუმლაძე'
           name='surname'
-          width='clamp(15em, 22vw, 35em)'
-          iconPosition='55vw'
+          width='clamp(15em, 20vw, 35em)'
+          iconPosition='47vw'
           validationMessage='მინიმუმ 2 ასო, ქართული ასოები'
           validation={{
             required: true,
@@ -96,8 +99,8 @@ const GeneralInformationForm = () => {
         labelName='ელ.ფოსტა'
         placeHolder='anzorr666@redberry.ge'
         name='email'
-        width='clamp(15em, 49vw, 60em)'
-        iconPosition='55vw'
+        width='clamp(15em, 45vw, 60em)'
+        iconPosition='47vw'
         validationMessage='უნდა მთავრდებოდეს @redberry.ge-ით'
         validation={{
           required: true,
@@ -115,8 +118,8 @@ const GeneralInformationForm = () => {
         labelName='მობილურის ნომერი'
         placeHolder='+995 551 12 34 56'
         name='mobile_number'
-        width='clamp(15em, 49vw, 60em)'
-        iconPosition='55vw'
+        width='clamp(15em, 45vw, 60em)'
+        iconPosition='47vw'
         validationMessage='უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს'
         validation={{
           required: true,

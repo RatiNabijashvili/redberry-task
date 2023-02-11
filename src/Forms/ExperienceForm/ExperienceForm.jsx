@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 import Styles from './Form.module.css'
 import { FormContext } from '../../context'
 import ExperienceInputGroup from '../../Components/ExperienceInputGroup/ExperienceInputGroup'
@@ -14,15 +14,19 @@ const ExperienceForm = () => {
     mode: 'onChange',
   })
 
+  const {
+    formData,
+    addExperience,
+    changeExperiencesField,
+    setValidationIndex,
+  } = useContext(FormContext)
+
   const onSubmit = () => {
     navigate('/education')
+    setValidationIndex(2)
   }
 
-  const { formData, addExperience, changeExperiencesField } =
-    useContext(FormContext)
-
   const navigate = useNavigate()
-  console.log(errors)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -32,6 +36,7 @@ const ExperienceForm = () => {
           const handleChange = (e) => {
             const key = e.target.name.substring(prefix.length)
             changeExperiencesField(i, { [key]: e.target.value })
+            setValidationIndex(1)
           }
 
           return (

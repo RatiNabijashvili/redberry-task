@@ -1,3 +1,122 @@
+.resume-container {
+  position: relative;
+  padding: 0.5vw;
+}
+
 .general-information-container {
   display: flex;
+  width: 90%;
+}
+
+.name-surname-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.name,
+.surname {
+  font-family: Helvetica Neue;
+  font-weight: 800;
+  color: #f93b1d;
+  font-size: clamp(1.2rem, 1.5vw, 4rem);
+}
+
+.surname {
+  margin-left: 1vw;
+}
+
+.email-mobile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-container,
+.mobile-container {
+  display: flex;
+  align-items: center;
+}
+
+.email-icon,
+.phone-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.email,
+.mobile-number {
+  font-family: Helvetica Neue;
+  font-weight: 400;
+  color: #1a1a1a;
+  font-size: clamp(1rem, 1.1vw, 4rem);
+  margin: 0.5vw;
+}
+
+.about-name,
+.about-me {
+  font-family: Helvetica Neue;
+}
+
+.about-name {
+  font-weight: 800;
+  color: #f93b1d;
+  font-size: clamp(1.2rem, 1.3vw, 4rem);
+}
+
+.about-me {
+  font-weight: 400;
+  color: #000000;
+  font-size: clamp(0.8rem, 1vw, 4rem);
+  line-height: 1.4;
+}
+
+.user-photo {
+  width: 230px;
+  height: 230px;
+  min-width: 230px;
+  border-radius: 50%;
+}
+
+.line {
+  width: 40vw;
+  height: 1px;
+  background-color: #c8c8c8;
+  margin-bottom: 20px;
+}
+
+.position {
+  font-family: Helvetica Neue;
+  font-weight: 500;
+  color: #1a1a1a;
+  font-size: clamp(1rem, 1.2vw, 4rem);
+  margin: 5px 0;
+}
+
+.date {
+  font-family: Helvetica Neue;
+  font-weight: 400;
+  font-style: italic;
+  color: #909090;
+  font-size: clamp(0.8rem, 1vw, 4rem);
+  margin: 0;
+}
+
+.description {
+  font-family: Helvetica Neue;
+  font-weight: 400;
+  color: #000000;
+  font-size: clamp(0.8rem, 1vw, 4rem);
+  line-height: 1.4;
+}
+
+.institute {
+  font-family: Helvetica Neue;
+  font-weight: 500;
+  color: #1a1a1a;
+  font-size: clamp(1rem, 1.2vw, 4rem);
+  margin: 5px 0;
+}
+
+.resume-logo {
+  position: absolute;
+  bottom: 5vw;
 }

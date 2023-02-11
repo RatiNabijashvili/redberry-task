@@ -1,0 +1,31 @@
+.line {
+  width: 40vw;
+  height: 1px;
+  background-color: #c8c8c8;
+  margin-bottom: 20px;
+}
+
+.date {
+  font-family: Helvetica Neue;
+  font-weight: 400;
+  font-style: italic;
+  color: #909090;
+  font-size: clamp(0.8rem, 1vw, 4rem);
+  margin: 0;
+}
+
+.description {
+  font-family: Helvetica Neue;
+  font-weight: 400;
+  color: #000000;
+  font-size: clamp(0.8rem, 1vw, 4rem);
+  line-height: 1.4;
+}
+
+.institute {
+  font-family: Helvetica Neue;
+  font-weight: 500;
+  color: #1a1a1a;
+  font-size: clamp(1rem, 1.2vw, 4rem);
+  margin: 5px 0;
+}

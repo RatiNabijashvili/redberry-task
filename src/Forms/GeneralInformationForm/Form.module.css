@@ -4,11 +4,11 @@
 }
 
 .next-btn-container {
-  width: 50vw;
+  width: 45vw;
   position: relative;
   display: flex;
   justify-content: flex-end;
-  margin-top: 2vw;
+  margin-top: 5vw;
 }
 
 .next-btn {

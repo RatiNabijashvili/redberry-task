@@ -32,7 +32,7 @@ const GeneralInformation = () => {
         </div>
       </div>
       <div className={Styles['right-column']}>
-        <Resume />
+        <Resume width='44vw' minHeight='100vh' />
       </div>
     </div>
   )

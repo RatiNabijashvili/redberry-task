@@ -29,11 +29,16 @@ const defaultGeneralInfo = {
 }
 
 export const FormContextProvider = ({ children }) => {
+  const [validationIndex, setValidationIndex] = useLocalStorage(
+    'validationIndex',
+    0
+  )
   const [formData, setFormData] = useLocalStorage('formData', {
     ...defaultGeneralInfo,
   })
 
   const clearData = () => {
+    setValidationIndex(0)
     setFormData(defaultGeneralInfo)
   }
 
@@ -49,8 +54,21 @@ export const FormContextProvider = ({ children }) => {
     setFormData({ ...formData })
   }
 
+  const changeEducationsField = (index, fieldData) => {
+    formData.educations[index] = {
+      ...formData.educations[index],
+      ...fieldData,
+    }
+    setFormData({ ...formData })
+  }
+
   const addExperience = () => {
     formData.experiences.push({ ...defaultExperienceInfo })
+    setFormData({ ...formData })
+  }
+
+  const addEducation = () => {
+    formData.educations.push({ ...defaultEducationInfo })
     setFormData({ ...formData })
   }
 
@@ -61,7 +79,11 @@ export const FormContextProvider = ({ children }) => {
         changeGeneralField,
         changeExperiencesField,
         addExperience,
+        changeEducationsField,
+        addEducation,
         clearData,
+        validationIndex,
+        setValidationIndex,
       }}
     >
       {children}
