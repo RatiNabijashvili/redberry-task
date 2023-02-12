@@ -24,8 +24,6 @@ const Resume = () => {
 
       tempData.image = new File([blob], 'image', { type: 'image/png' })
 
-      console.log(tempData.image)
-
       axios
         .post('https://resume.redberryinternship.ge/api/cvs', tempData, {
           headers: {
@@ -45,7 +43,6 @@ const Resume = () => {
   }, [formData])
 
   if (validationIndex < 3) return <Navigate to='/general-information' replace />
-  console.log('test', resumeData)
   return (
     <div className={Styles['resume-container']}>
       <img
