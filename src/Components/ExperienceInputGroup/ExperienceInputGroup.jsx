@@ -1,10 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Styles from './ExperienceInputGroup.module.css'
 import Input from '../../FormTemplates/Input/Input'
 import TextArea from '../../FormTemplates/Textarea/TextArea'
 import DatePicker from '../../FormTemplates/DatePicker/DatePicker'
-import { useForm } from 'react-hook-form'
-import { FormContext } from '../../context'
 
 const ExperienceInputGroup = ({
   prefix,

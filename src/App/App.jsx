@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormContextProvider } from '../context'
+import { FormContextProvider } from '../context/context'
 import { Routes, Route } from 'react-router-dom'
 import Home from '../Home/Home'
 import GeneralInformation from '../General-Information/GeneralInformation'

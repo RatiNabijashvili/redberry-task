@@ -47,7 +47,13 @@ const Degree = (props) => {
           </option>
           {degrees.map((degree) => {
             return (
-              <option key={degree.id} value={degree.title}>
+              <option
+                key={degree.id}
+                value={degree.title}
+                onClick={() => {
+                  props.onSelect(degree.id)
+                }}
+              >
                 {degree.title}
               </option>
             )

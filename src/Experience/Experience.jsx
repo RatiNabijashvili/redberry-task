@@ -3,12 +3,12 @@ import Styles from './Experience.module.css'
 import ExperienceForm from '../Forms/ExperienceForm/ExperienceForm'
 import ArrowIcon from '../Images/arrow-icon.svg'
 import { useNavigate, Navigate } from 'react-router-dom'
-import Resume from '../Resume/Resume'
-import { FormContext } from '../context'
+import ResumeTemplate from '../ResumeTemplate/ResumeTemplate'
+import { FormContext } from '../context/context'
 
 const Experience = () => {
   const navigate = useNavigate()
-  const { validationIndex, clearData } = useContext(FormContext)
+  const { validationIndex, clearData, formData } = useContext(FormContext)
   if (validationIndex < 1) return <Navigate to='/general-information' replace />
 
   return (
@@ -34,7 +34,12 @@ const Experience = () => {
         </div>
       </div>
       <div className={Styles['right-column']}>
-        <Resume width='44vw' minHeight='100vh' />
+        <ResumeTemplate
+          width='44vw'
+          minHeight='100vh'
+          formData={formData}
+          type='default'
+        />
       </div>
     </div>
   )

@@ -11,6 +11,7 @@ const EducationInputGroup = ({
   values,
   errors,
   onChange,
+  onDegreeSelect,
 }) => {
   return (
     <>
@@ -41,6 +42,7 @@ const EducationInputGroup = ({
           value={values.degree}
           error={errors[prefix + 'degree']}
           onChange={onChange}
+          onSelect={onDegreeSelect}
           register={register}
         />
         <DatePicker

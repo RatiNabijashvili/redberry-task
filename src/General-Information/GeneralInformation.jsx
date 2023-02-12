@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
 import Styles from './GeneralInformation.module.css'
 import ArrowIcon from '../Images/arrow-icon.svg'
-import { Form, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import GeneralInformationForm from '../Forms/GeneralInformationForm/GeneralInfromationForm'
-import { FormContext } from '../context'
-import Resume from '../Resume/Resume'
+import { FormContext } from '../context/context'
+import ResumeTemplate from '../ResumeTemplate/ResumeTemplate'
 
 const GeneralInformation = () => {
   const navigate = useNavigate()
-  const { clearData } = useContext(FormContext)
+  const { clearData, formData } = useContext(FormContext)
   return (
     <div className={Styles['main-container']}>
       <div className={Styles['left-column']}>
@@ -32,7 +32,12 @@ const GeneralInformation = () => {
         </div>
       </div>
       <div className={Styles['right-column']}>
-        <Resume width='44vw' minHeight='100vh' />
+        <ResumeTemplate
+          width='44vw'
+          minHeight='100vh'
+          formData={formData}
+          type='default'
+        />
       </div>
     </div>
   )

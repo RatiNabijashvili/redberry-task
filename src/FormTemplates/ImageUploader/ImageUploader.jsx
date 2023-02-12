@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import useLocalStorage from '../../useLocalStorage/useLocalStorage'
+import React from 'react'
 import Styles from './ImageUploader.module.css'
 
 const ImageUploader = (props) => {

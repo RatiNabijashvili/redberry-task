@@ -5,13 +5,13 @@ import TextArea from '../../FormTemplates/Textarea/TextArea'
 import ImageUploader from '../../FormTemplates/ImageUploader/ImageUploader'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { FormContext } from '../../context'
+import { FormContext } from '../../context/context'
 
 const GeneralInformationForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty, isValid, isValidating },
+    formState: { errors },
   } = useForm({
     mode: 'onChange',
   })
@@ -117,7 +117,7 @@ const GeneralInformationForm = () => {
       <Input
         labelName='მობილურის ნომერი'
         placeHolder='+995 551 12 34 56'
-        name='mobile_number'
+        name='phone_number'
         width='clamp(15em, 45vw, 60em)'
         iconPosition='47vw'
         validationMessage='უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს'
@@ -128,9 +128,9 @@ const GeneralInformationForm = () => {
             message: 'უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს',
           },
         }}
-        value={formData.mobile_number}
+        value={formData.phone_number}
         onChange={handleChange}
-        error={errors?.mobile_number}
+        error={errors?.phone_number}
         register={register}
       />
       <div className={Styles['next-btn-container']}>

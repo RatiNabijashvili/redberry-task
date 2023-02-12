@@ -3,11 +3,11 @@ import Styles from './Education.module.css'
 import EducationForm from '../Forms/EducationForm/EducationForm'
 import ArrowIcon from '../Images/arrow-icon.svg'
 import { useNavigate, Navigate } from 'react-router-dom'
-import { FormContext } from '../context'
-import Resume from '../Resume/Resume'
+import { FormContext } from '../context/context'
+import ResumeTemplate from '../ResumeTemplate/ResumeTemplate'
 
 const Education = () => {
-  const { validationIndex, clearData } = useContext(FormContext)
+  const { validationIndex, clearData, formData } = useContext(FormContext)
   const navigate = useNavigate()
 
   if (validationIndex < 2) return <Navigate to='/experience' replace />
@@ -35,7 +35,12 @@ const Education = () => {
         </div>
       </div>
       <div className={Styles['right-column']}>
-        <Resume width='44vw' minHeight='100vh' />
+        <ResumeTemplate
+          width='44vw'
+          minHeight='100vh'
+          formData={formData}
+          type='default'
+        />
       </div>
     </div>
   )

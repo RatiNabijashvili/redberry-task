@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate, Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Styles from './Form.module.css'
-import { FormContext } from '../../context'
+import { FormContext } from '../../context/context'
 import ExperienceInputGroup from '../../Components/ExperienceInputGroup/ExperienceInputGroup'
 
 const ExperienceForm = () => {

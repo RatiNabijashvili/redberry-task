@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Styles from './Form.module.css'
-import { FormContext } from '../../context'
+import { FormContext } from '../../context/context'
 import EducationInputGroup from '../../Components/EducationInputGroup/EducationInputGroup'
 
 const EducationForm = () => {
@@ -34,6 +34,10 @@ const EducationForm = () => {
             setValidationIndex(2)
           }
 
+          const handleDegreeSelect = (id) => {
+            changeEducationsField(i, { degree_id: id })
+          }
+
           return (
             <EducationInputGroup
               key={i}
@@ -42,6 +46,7 @@ const EducationForm = () => {
               values={educationObj}
               errors={errors}
               onChange={handleChange}
+              onDegreeSelect={handleDegreeSelect}
             />
           )
         })}

@@ -1,5 +1,5 @@
-import { createContext, useState } from 'react'
-import useLocalStorage from './useLocalStorage/useLocalStorage'
+import { createContext } from 'react'
+import useLocalStorage from '../hooks/useLocalStorage'
 export const FormContext = createContext(null)
 
 const defaultExperienceInfo = {
@@ -11,6 +11,7 @@ const defaultExperienceInfo = {
 }
 
 const defaultEducationInfo = {
+  degree_id: 0,
   institute: '',
   degree: '',
   due_date: '',
@@ -23,7 +24,7 @@ const defaultGeneralInfo = {
   image: '',
   about_me: '',
   email: '',
-  mobile_number: '',
+  phone_number: '',
   experiences: [defaultExperienceInfo],
   educations: [defaultEducationInfo],
 }
@@ -39,7 +40,7 @@ export const FormContextProvider = ({ children }) => {
 
   const clearData = () => {
     setValidationIndex(0)
-    setFormData(defaultGeneralInfo)
+    setFormData({ ...defaultGeneralInfo })
   }
 
   const changeGeneralField = (fieldData) => {
